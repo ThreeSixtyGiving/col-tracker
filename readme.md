@@ -1,4 +1,4 @@
-# 360Giving COVID19 Grants Tracker
+# 360Giving Cost of Living Grants Tracker
 
 ![360Giving Logo](https://www.threesixtygiving.org/wp-content/themes/360giving2020/assets/images/360-logos/360giving-main.svg)
 
@@ -37,13 +37,13 @@ python index.py
 1. On server:
 
 ```sh
-dokku apps:create covidtracker
+dokku apps:create coltracker
 ```
 
 2. On client:
 
 ```sh
-git remote add dokku dokku@<IPADDRESS>:covidtracker
+git remote add dokku dokku@<IPADDRESS>:coltracker
 
 ```
 
@@ -51,30 +51,30 @@ git remote add dokku dokku@<IPADDRESS>:covidtracker
 
 ```sh
 # create a persistant directory
-mkdir -p  /var/lib/dokku/data/storage/covidtracker
-chown -R dokku:dokku /var/lib/dokku/data/storage/covidtracker
-chown -R 32767:32767 /var/lib/dokku/data/storage/covidtracker
-dokku storage:mount covidtracker /var/lib/dokku/data/storage/covidtracker:/app/storage
+mkdir -p  /var/lib/dokku/data/storage/coltracker
+chown -R dokku:dokku /var/lib/dokku/data/storage/coltracker
+chown -R 32767:32767 /var/lib/dokku/data/storage/coltracker
+dokku storage:mount coltracker /var/lib/dokku/data/storage/coltracker:/app/storage
 
 # set up settings
-dokku config:set covidtracker DB_URI=**DATABASE URL**
-dokku config:set covidtracker GOOGLE_ANALYTICS=********
-dokku config:set covidtracker PROMETHEUS_AUTH_PASSWORD=********
-dokku config:set -no-restart covidtracker DATA_DIR=/app/storage/data
-dokku config:set -no-restart covidtracker FLASK_APP=covidtracker.app:server
+dokku config:set coltracker DB_URI=**DATABASE URL**
+dokku config:set coltracker GOOGLE_ANALYTICS=********
+dokku config:set coltracker PROMETHEUS_AUTH_PASSWORD=********
+dokku config:set -no-restart coltracker DATA_DIR=/app/storage/data
+dokku config:set -no-restart coltracker FLASK_APP=coltracker.app:server
 
 # set up redis
-dokku redis:create covidtrackercache
-dokku redis:link covidtrackercache covidtracker
+dokku redis:create coltrackercache
+dokku redis:link coltrackercache coltracker
 
 # fetch data
-dokku run covidtracker flask fetch-data
-dokku run covidtracker flask clear-cache
-dokku ps:rebuild covidtracker
+dokku run coltracker flask fetch-data
+dokku run coltracker flask clear-cache
+dokku ps:rebuild coltracker
 ```
 
 4. Set up cron tab for scheduled tasks (on server)
 
 ```sh
-nano /etc/cron.d/covidtracker
+nano /etc/cron.d/coltracker
 ```

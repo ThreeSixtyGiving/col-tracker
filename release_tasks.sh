@@ -1,1 +1,1 @@
-cp -vr covidtracker/assets/data /app/storage
+cp -vr coltracker/assets/data /app/storage

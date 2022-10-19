@@ -3,5 +3,15 @@
     "web": {
       "quantity": 4
     }
-  }
+  },
+  "cron": [
+    {
+      "command": "flask fetch-data > /dev/null",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "command": "flask clear-cache > /dev/null",
+      "schedule": "45 5 * * *"
+    }
+  ]
 }

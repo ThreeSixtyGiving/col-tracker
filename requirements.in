@@ -10,3 +10,6 @@ click>=7.1.2
 redis
 jinja2>=2.11.3
 prometheus-client
+black
+isort
+flake8

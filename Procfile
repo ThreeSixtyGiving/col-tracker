@@ -1,2 +1,2 @@
-web: gunicorn covidtracker.app:server
+web: gunicorn coltracker.app:server
 release: sh ./release_tasks.sh
