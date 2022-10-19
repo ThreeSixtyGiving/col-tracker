@@ -37,13 +37,13 @@ python index.py
 1. On server:
 
 ```sh
-dokku apps:create coltracker
+dokku apps:create col
 ```
 
 2. On client:
 
 ```sh
-git remote add dokku dokku@<IPADDRESS>:coltracker
+git remote add dokku dokku@<IPADDRESS>:col
 
 ```
 
@@ -51,30 +51,28 @@ git remote add dokku dokku@<IPADDRESS>:coltracker
 
 ```sh
 # create a persistant directory
-mkdir -p  /var/lib/dokku/data/storage/coltracker
-chown -R dokku:dokku /var/lib/dokku/data/storage/coltracker
-chown -R 32767:32767 /var/lib/dokku/data/storage/coltracker
-dokku storage:mount coltracker /var/lib/dokku/data/storage/coltracker:/app/storage
+dokku storage:ensure-directory col
+dokku storage:mount col /var/lib/dokku/data/storage/col:/app/storage
 
 # set up settings
-dokku config:set coltracker DB_URI=**DATABASE URL**
-dokku config:set coltracker GOOGLE_ANALYTICS=********
-dokku config:set coltracker PROMETHEUS_AUTH_PASSWORD=********
-dokku config:set -no-restart coltracker DATA_DIR=/app/storage/data
-dokku config:set -no-restart coltracker FLASK_APP=coltracker.app:server
+dokku config:set --no-restart col DB_URI=**DATABASE URL**
+dokku config:set --no-restart col GOOGLE_ANALYTICS=********
+dokku config:set --no-restart col PROMETHEUS_AUTH_PASSWORD=********
+dokku config:set --no-restart col DATA_DIR=/app/storage/data
+dokku config:set --no-restart col FLASK_APP=coltracker.app:server
 
 # set up redis
 dokku redis:create coltrackercache
-dokku redis:link coltrackercache coltracker
+dokku redis:link coltrackercache col
 
 # fetch data
-dokku run coltracker flask fetch-data
-dokku run coltracker flask clear-cache
-dokku ps:rebuild coltracker
+dokku run col flask fetch-data
+dokku run col flask clear-cache
+dokku ps:rebuild col
 ```
 
 4. Set up cron tab for scheduled tasks (on server)
 
 ```sh
-nano /etc/cron.d/coltracker
+nano /etc/cron.d/col
 ```
