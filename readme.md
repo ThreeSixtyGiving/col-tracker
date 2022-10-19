@@ -55,7 +55,7 @@ dokku storage:ensure-directory col
 dokku storage:mount col /var/lib/dokku/data/storage/col:/app/storage
 
 # set up settings
-dokku config:set --no-restart col DB_URI=**DATABASE URL**
+dokku config:set --no-restart col DB_URL=**DATABASE URL**
 dokku config:set --no-restart col GOOGLE_ANALYTICS=********
 dokku config:set --no-restart col PROMETHEUS_AUTH_PASSWORD=********
 dokku config:set --no-restart col DATA_DIR=/app/storage/data

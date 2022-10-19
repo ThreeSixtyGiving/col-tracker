@@ -15,12 +15,6 @@ SHELL=/bin/bash
 
 ### PLACE ALL CRON TASKS BELOW
 
-# update with the latest data
-0 5 * * * dokku dokku run col flask fetch-data > /dev/null
-
-# clear the cache to make way for the new data
-45 5 * * * dokku dokku run col flask clear-cache > /dev/null
-
 # restart the application in the morning to load the new data
 0 6 * * * dokku dokku ps:rebuild col > /dev/null
 
