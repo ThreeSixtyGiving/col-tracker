@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def chart(grants, chart_type="amount", show_grantmakers=True, cumulative=True):
-    idx = pd.date_range("2020-03-16", datetime.datetime.now())
+    idx = pd.date_range("2022-01-01", datetime.datetime.now())
     if chart_type == "amount":
         byDate = (
             pd.crosstab(
