@@ -231,7 +231,7 @@ def fetch_data(
                 {manual_adjustments_include}
             )
             and (
-                to_date(g.data->>'awardDate', 'YYYY-MM-DD') > '2020-03-16'
+                to_date(g.data->>'awardDate', 'YYYY-MM-DD') > '2022-01-01'
                 or g.data->>'description' ~* 'uplift|variation'
             )
             and to_date(g.data->>'awardDate', 'YYYY-MM-DD') < NOW() + interval '1 day'

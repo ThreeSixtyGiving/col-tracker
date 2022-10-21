@@ -199,7 +199,7 @@ def footer():
                 children=[
                     html.P(
                         [
-                            "© Copyright 2020 360Giving, licensed under a ",
+                            "© Copyright 2022 360Giving, licensed under a ",
                             html.A(
                                 href="https://creativecommons.org/licenses/by/4.0/",
                                 target="_blank",
