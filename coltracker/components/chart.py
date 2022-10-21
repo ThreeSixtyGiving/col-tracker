@@ -4,9 +4,11 @@ from dash import dcc
 from dash import html
 import pandas as pd
 
+from coltracker.settings import START_DATE
+
 
 def chart(grants, chart_type="amount", show_grantmakers=True, cumulative=True):
-    idx = pd.date_range("2022-01-01", datetime.datetime.now())
+    idx = pd.date_range(START_DATE, datetime.datetime.now())
     if chart_type == "amount":
         byDate = (
             pd.crosstab(

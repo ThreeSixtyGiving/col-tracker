@@ -56,6 +56,7 @@ THREESIXTY_COLOURS = [
     "#786114",  # Darker yellow
     "#5E1613",  # Darker red
 ]
+START_DATE = "2022-01-01"
 
 FUNDER_GROUPS = {
     "lottery": {

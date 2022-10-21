@@ -15,6 +15,7 @@ from coltracker.settings import (
     STOPWORDS,
     WORDS_PICKLE,
     DISABLE_UPDATE,
+    START_DATE,
 )
 
 
@@ -231,7 +232,7 @@ def fetch_data(
                 {manual_adjustments_include}
             )
             and (
-                to_date(g.data->>'awardDate', 'YYYY-MM-DD') > '2022-01-01'
+                to_date(g.data->>'awardDate', 'YYYY-MM-DD') > %(startdate)s
                 or g.data->>'description' ~* 'uplift|variation'
             )
             and to_date(g.data->>'awardDate', 'YYYY-MM-DD') < NOW() + interval '1 day'
@@ -242,7 +243,10 @@ def fetch_data(
     grants = pd.read_sql(
         grant_sql,
         con=db_url,
-        params=manual_adjustments_params,
+        params={
+            "startdate": START_DATE,
+            **manual_adjustments_params,
+        },
     )
     print("Fetched {:,.0f} grants from database".format(len(grants)))
 
