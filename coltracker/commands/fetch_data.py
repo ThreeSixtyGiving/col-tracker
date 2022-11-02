@@ -8,14 +8,14 @@ from nltk.util import ngrams
 
 from coltracker.settings import (
     DB_URL,
+    DISABLE_UPDATE,
     FUNDER_IDS_FILE,
     GRANTS_DATA_FILE,
     GRANTS_DATA_PICKLE,
     PRIORITIES,
+    START_DATE,
     STOPWORDS,
     WORDS_PICKLE,
-    DISABLE_UPDATE,
-    START_DATE,
 )
 
 

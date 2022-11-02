@@ -1,7 +1,5 @@
-from dash import dcc
-from dash import html
+from dash import dcc, html
 
-from .data import filter_data, get_data
 from .components import (
     cards,
     filters,
@@ -12,6 +10,7 @@ from .components import (
     tab_data,
     tab_map,
 )
+from .data import filter_data, get_data
 
 
 def layout():

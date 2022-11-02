@@ -1,9 +1,9 @@
 import copy
 from typing import Optional
 
+import plotly.graph_objs as go
 from dash import html
 from plotly.subplots import make_subplots
-import plotly.graph_objs as go
 
 LAYOUT = {
     "yaxis": {

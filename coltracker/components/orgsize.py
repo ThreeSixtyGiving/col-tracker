@@ -1,8 +1,8 @@
-from dash import dcc
 import pandas as pd
+from dash import dcc
 
 from ..settings import INCOME_BIN_LABELS, INCOME_BINS, THREESIXTY_COLOURS
-from ._utils import horizontal_bar, card_wrapper
+from ._utils import card_wrapper, horizontal_bar
 
 
 def orgsize(grants):

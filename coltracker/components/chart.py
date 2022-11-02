@@ -1,8 +1,7 @@
 import datetime
 
-from dash import dcc
-from dash import html
 import pandas as pd
+from dash import dcc, html
 
 from coltracker.settings import START_DATE
 

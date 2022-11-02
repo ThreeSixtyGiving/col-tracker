@@ -1,5 +1,4 @@
-from dash import dcc
-from dash import html
+from dash import dcc, html
 
 from ..settings import FUNDER_GROUPS
 

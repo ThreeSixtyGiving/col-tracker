@@ -31,8 +31,8 @@ from .settings import (
     CACHE_SETTINGS,
     CACHE_TIMEOUT,
     GRANTS_DATA_FILE,
-    PROMETHEUS_AUTH_USERNAME,
     PROMETHEUS_AUTH_PASSWORD,
+    PROMETHEUS_AUTH_USERNAME,
 )
 
 external_stylesheets = []

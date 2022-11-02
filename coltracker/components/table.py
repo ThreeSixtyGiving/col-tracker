@@ -1,5 +1,4 @@
-from dash import html
-from dash import dash_table
+from dash import dash_table, html
 from dash.dash_table.Format import Format, Scheme, Symbol
 
 

@@ -1,8 +1,7 @@
-from dash import dcc
-from dash import html
+from dash import dcc, html
 
 from ..settings import FUNDER_GROUPS, THREESIXTY_COLOURS
-from ._utils import horizontal_bar, card_wrapper
+from ._utils import card_wrapper, horizontal_bar
 
 
 def top_funders(grants, filters, limit=10, start=0):
