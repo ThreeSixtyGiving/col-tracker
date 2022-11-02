@@ -1,9 +1,8 @@
 from dash import dcc
-from dash import html
 import pandas as pd
 
 from ..settings import AMOUNT_BIN_LABELS, AMOUNT_BINS, THREESIXTY_COLOURS
-from ._utils import horizontal_bar
+from ._utils import horizontal_bar, card_wrapper
 
 
 def awardamount(grants):
@@ -20,33 +19,18 @@ def awardamount(grants):
     if count_unknown:
         amounts.append({"name": "Unknown", "count": count_unknown})
 
-    return html.Div(
-        className="base-card base-card--orange grid__1",
-        children=[
-            html.Div(
-                className="base-card__content",
-                children=[
-                    html.Header(
-                        className="base-card__header",
-                        children=[
-                            html.H3(
-                                className="base-card__heading", children="Grant amount"
-                            ),
-                            html.H4(
-                                className="base-card__subheading",
-                                children="Number of grants",
-                            ),
-                        ],
-                    ),
-                    dcc.Graph(
-                        id="amount-chart-chart",
-                        figure=horizontal_bar(
-                            amounts,
-                            colour=THREESIXTY_COLOURS[0],
-                        ),
-                        config={"displayModeBar": False, "scrollZoom": False},
-                    ),
-                ],
+    return card_wrapper(
+        "Grant amount",
+        [
+            dcc.Graph(
+                id="amount-chart-chart",
+                figure=horizontal_bar(
+                    amounts,
+                    colour=THREESIXTY_COLOURS[0],
+                ),
+                config={"displayModeBar": False, "scrollZoom": False},
             ),
         ],
+        subtitle="Number of grants",
+        colour="orange",
     )

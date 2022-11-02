@@ -2,7 +2,7 @@ from dash import dcc
 from dash import html
 
 from ..settings import FUNDER_GROUPS, THREESIXTY_COLOURS
-from ._utils import horizontal_bar
+from ._utils import horizontal_bar, card_wrapper
 
 
 def top_funders(grants, filters, limit=10, start=0):
@@ -46,45 +46,29 @@ def top_funders(grants, filters, limit=10, start=0):
         .iterrows()
     ]
 
-    return html.Div(
-        className="base-card base-card--orange grid__1",
-        children=[
-            html.Div(
-                className="base-card__content",
-                children=[
-                    html.Header(
-                        className="base-card__header",
-                        children=[
-                            html.H3(
-                                className="base-card__heading",
-                                children="Grants made by funder",
-                            ),
-                            html.H4(
-                                className="base-card__subheading",
-                                children=["Number of grants. ", funder_str],
-                            ),
-                        ],
-                    ),
-                    dcc.Graph(
-                        id="top-funders-chart",
-                        figure=horizontal_bar(
-                            funder_counts,
-                            colour=THREESIXTY_COLOURS[0],
-                        ),
-                        config={"displayModeBar": False, "scrollZoom": False},
-                    ),
-                ]
-                + (
-                    [
-                        html.P(
-                            "{:,.0f} funders from this group have not published data yet.".format(
-                                missing_funders
-                            )
-                        )
-                    ]
-                    if missing_funders
-                    else []
+    return card_wrapper(
+        "Grants made by funder",
+        [
+            dcc.Graph(
+                id="top-funders-chart",
+                figure=horizontal_bar(
+                    funder_counts,
+                    colour=THREESIXTY_COLOURS[0],
                 ),
+                config={"displayModeBar": False, "scrollZoom": False},
             ),
-        ],
+        ]
+        + (
+            [
+                html.P(
+                    "{:,.0f} funders from this group have not published data yet.".format(
+                        missing_funders
+                    )
+                )
+            ]
+            if missing_funders
+            else []
+        ),
+        subtitle=["Number of grants. ", funder_str],
+        colour="orange",
     )

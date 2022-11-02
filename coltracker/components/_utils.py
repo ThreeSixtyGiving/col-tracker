@@ -1,5 +1,7 @@
 import copy
+from typing import Optional
 
+from dash import html
 from plotly.subplots import make_subplots
 import plotly.graph_objs as go
 
@@ -48,7 +50,7 @@ def horizontal_bar(
     log_axis=False,
     colour="#237756",
     text_colour="#fff",
-    **kwargs
+    **kwargs,
 ):
 
     # categories = {
@@ -69,7 +71,7 @@ def horizontal_bar(
         shared_xaxes=True,
         print_grid=False,
         vertical_spacing=(0.45 / len(categories)),
-        **kwargs
+        **kwargs,
     )
     max_value = max([x[value] for x in categories])
     for k, x in enumerate(categories):
@@ -111,7 +113,7 @@ def horizontal_bar(
             k: copy.deepcopy(v)
             for k, v in LAYOUT.items()
             if k not in ["xaxis", "yaxis"]
-        }
+        },
     )
 
     for x in hb_plot["layout"]["annotations"]:
@@ -138,4 +140,37 @@ def horizontal_bar(
     return dict(
         data=hb_plot.to_dict().get("data", []),
         layout=hb_plot.to_dict().get("layout", {}),
+    )
+
+
+def card_wrapper(
+    title: str,
+    content: list = [],
+    colour: str = "teal",
+    subtitle: Optional[str] = None,
+):
+    return html.Div(
+        className=f"base-card base-card--{colour}",
+        children=[
+            html.Div(
+                className="base-card__content",
+                children=[
+                    html.Header(
+                        className="base-card__header",
+                        children=[
+                            html.H3(
+                                className="base-card__heading",
+                                children=title,
+                            ),
+                            html.H4(
+                                className="base-card__subheading", children=subtitle
+                            )
+                            if subtitle
+                            else None,
+                        ],
+                    )
+                ]
+                + content,
+            ),
+        ],
     )

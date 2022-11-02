@@ -3,6 +3,7 @@ from random import choice
 from dash import html
 
 from ..settings import THREESIXTY_COLOURS
+from ._utils import card_wrapper
 
 
 def wordcloud(words, func="bigrams"):
@@ -32,23 +33,10 @@ def wordcloud(words, func="bigrams"):
         )
         # spans.append(' ')
 
-    return html.Div(
-        className="base-card base-card--yellow",
-        children=[
-            html.Div(
-                className="base-card__content",
-                children=[
-                    html.Header(
-                        className="base-card__header",
-                        children=[
-                            html.H3(
-                                className="base-card__heading",
-                                children="Commonly used words",
-                            ),
-                        ],
-                    ),
-                    html.P(className="align-left", children=spans),
-                ],
-            ),
+    return card_wrapper(
+        "Commonly used words",
+        [
+            html.P(className="align-left", children=spans),
         ],
+        colour="yellow",
     )

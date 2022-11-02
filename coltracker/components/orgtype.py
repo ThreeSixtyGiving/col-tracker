@@ -1,8 +1,7 @@
 from dash import dcc
-from dash import html
 
 from ..settings import THREESIXTY_COLOURS
-from ._utils import horizontal_bar
+from ._utils import horizontal_bar, card_wrapper
 
 
 def orgtype(grants):
@@ -14,34 +13,18 @@ def orgtype(grants):
     if count_unknown:
         orgtypes.append({"name": "Unknown", "count": count_unknown})
 
-    return html.Div(
-        className="base-card base-card--red grid__1",
-        children=[
-            html.Div(
-                className="base-card__content",
-                children=[
-                    html.Header(
-                        className="base-card__header",
-                        children=[
-                            html.H3(
-                                className="base-card__heading",
-                                children="Type of recipients",
-                            ),
-                            html.H4(
-                                className="base-card__subheading",
-                                children="Number of grants",
-                            ),
-                        ],
-                    ),
-                    dcc.Graph(
-                        id="orgtype-chart-chart",
-                        figure=horizontal_bar(
-                            orgtypes,
-                            colour=THREESIXTY_COLOURS[3],
-                        ),
-                        config={"displayModeBar": False, "scrollZoom": False},
-                    ),
-                ],
+    return card_wrapper(
+        "Type of recipients",
+        [
+            dcc.Graph(
+                id="orgtype-chart-chart",
+                figure=horizontal_bar(
+                    orgtypes,
+                    colour=THREESIXTY_COLOURS[3],
+                ),
+                config={"displayModeBar": False, "scrollZoom": False},
             ),
         ],
+        subtitle="Number of grants",
+        colour="red",
     )
