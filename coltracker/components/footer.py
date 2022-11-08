@@ -87,28 +87,20 @@ def footer():
                                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2401",
                                         children=[
                                             html.A(
+                                                href="https://www.threesixtygiving.org/2022/09/28/col/",
+                                                children=[
+                                                    "Cost of Living Publisher Guidance"
+                                                ],
+                                            ),
+                                        ],
+                                    ),
+                                    html.Li(
+                                        id="menu-item-2402",
+                                        className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2401",
+                                        children=[
+                                            html.A(
                                                 href="https://www.threesixtygiving.org/support/standard/",
                                                 children=["The Data Standard"],
-                                            ),
-                                        ],
-                                    ),
-                                    html.Li(
-                                        id="menu-item-2450",
-                                        className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2450",
-                                        children=[
-                                            html.A(
-                                                href="https://www.threesixtygiving.org/about/datachampions/",
-                                                children=["Data Champions"],
-                                            ),
-                                        ],
-                                    ),
-                                    html.Li(
-                                        id="menu-item-2403",
-                                        className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2403",
-                                        children=[
-                                            html.A(
-                                                href="https://www.threesixtygiving.org/support/",
-                                                children=["Support"],
                                             ),
                                         ],
                                     ),
@@ -139,16 +131,6 @@ def footer():
                                     ),
                                     html.Li(
                                         id="menu-item-2406",
-                                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2406",
-                                        children=[
-                                            html.A(
-                                                href="http://data.threesixtygiving.org/",
-                                                children=["Data Registry"],
-                                            ),
-                                        ],
-                                    ),
-                                    html.Li(
-                                        id="menu-item-2407",
                                         className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2407",
                                         children=[
                                             html.A(
@@ -158,12 +140,22 @@ def footer():
                                         ],
                                     ),
                                     html.Li(
-                                        id="menu-item-2408",
-                                        className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2408",
+                                        id="menu-item-2407",
+                                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2406",
                                         children=[
                                             html.A(
-                                                href="https://www.threesixtygiving.org/contact/",
-                                                children=["Contact"],
+                                                href="http://data.threesixtygiving.org/",
+                                                children=["Data Registry"],
+                                            ),
+                                        ],
+                                    ),
+                                    html.Li(
+                                        id="menu-item-2408",
+                                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2406",
+                                        children=[
+                                            html.A(
+                                                href="https://qualitydashboard.threesixtygiving.org/",
+                                                children=["Quality Dashboard"],
                                             ),
                                         ],
                                     ),
