@@ -40,6 +40,17 @@ meta_tags = [
     {"charset": "utf-8"},
     {"name": "viewport", "content": "width=device-width, initial-scale=1.0"},
     {"http-equiv": "X-UA-Compatible", "content": "ie=edge"},
+    {"name": "twitter:card", "content": "summary"},
+    {"name": "twitter:site", "content": "@360Giving"},
+    {"name": "twitter:title", "content": "Cost of Living Grants Tracker"},
+    {
+        "name": "twitter:description",
+        "content": "Our Cost of Living tracker helps you follow funders' response to the Cost of Living crisis.",
+    },
+    {
+        "name": "twitter:image",
+        "content": "https://col.threesixtygiving.org/assets/360giving-icon.png",
+    },
 ]
 
 app = dash.Dash(
