@@ -40,15 +40,17 @@ def regions(grants):
         ("location.rgnctrycd", "location.rgnctrynm", "Country and Region"),
         ("location.rgncd", "location.rgnnm", "Region"),
     ]
+    has_data = False
     for a in area_types:
         if a[0] not in grants.columns:
             continue
         regions = grants[grants[a[0]] != ""].groupby([a[0], a[1]]).size()
         region_type = a[2]
-        if len(regions) > 1 and len(regions) < 100:
+        if len(regions) > 0 and len(regions) < 100:
+            has_data = True
             break
 
-    if len(regions) <= 1:
+    if not has_data:
         return card_wrapper("Grants by Region", [html.P("No data available")])
 
     regions = [{"name": i[1], "count": count} for i, count in regions.items()]
