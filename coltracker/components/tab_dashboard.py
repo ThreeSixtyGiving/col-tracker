@@ -29,7 +29,7 @@ def tab_dashboard(data, all_data):
 
         Grants are included if they use the terms "cost of living" somewhere in the grant description, title, or grant programme description or title. This is based on the [guidance for grantmakers](https://www.threesixtygiving.org/2022/09/28/col/) issued by 360Giving on tagging grants.
         
-        This tracker does not present the totality of funding provided in response to the crisis. In some cases, only a small proportion of the total grant amount recorded is in response to the cost of living crisis. Also, some funders have chosen to not tag grants with “cost of living” where they feel that all their grants support people in financial hardship, so these grants will not appear in the tracker.
+        Some of the data includes grants made to other grantmakers to distribute. These are highlighted in the dashboard above.You can choose to exclude these grants from the data to prevent skews to analysis this might cause.
     """
                             )
                         ],
@@ -39,9 +39,9 @@ def tab_dashboard(data, all_data):
                         children=[
                             dcc.Markdown(
                                 """
+        This tracker does not present the totality of funding provided in response to the crisis. In some cases, only a small proportion of the total grant amount recorded is in response to the cost of living crisis. Also, some funders have chosen to not tag grants with “cost of living” where they feel that all their grants support people in financial hardship, so these grants will not appear in the tracker.
+        
         Not all grantmakers publish their grants as open data, and some publishers do not immediately publish their latest data.
-
-        Some of the data includes grants made to other grantmakers to distribute. These are highlighted in the dashboard above.You can choose to exclude these grants from the data to prevent skews to analysis this might cause.
     """
                             ),
                             dcc.Markdown(
